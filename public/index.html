@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>HC-SR04 DEMO</title>
+</head>
+<body>
+  <!-- <h1>DHT11 Temperature and Humidty Sensor Demonstration
+  <br>
+  <canvas id="myChart" height="600" width="1800"></canvas>
+  <br> -->
+  <h1>HC-SR04 Proximity Sensor : Using node.js and p5.js
+  <br>
+  <div id="distance">00:00</div></h1>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+  <script type="text/javascript" src="./javascript/sketch.js"></script>
+  <!-- <script type="text/javascript" src="./javascript/chart.js"></script> -->
+ 
+  <script>
+    let socket = io();
+    let distance = document.querySelector('#distance');
+    let slider = document.querySelector('#input');
+    let radius = 0;
+
+    socket.on('data', function(val){ // val = the incoming 'data'
+      val = Math.floor(val);
+      distance.innerHTML = val;
+      radius = val;
+    });
+
+  </script>
+</body>
+</html>
